@@ -14,12 +14,8 @@ def format_as_map(subdirs):
 def format_to_include(subdirs):
     res = ""
     for i in subdirs:
-        if i != data_struct:
-            res += f'#include "{i}.cpp"'
+        if i != 'data_struct':
+            res += f'#include "{i}.cpp"\n'
         else:
-            res += f'#include "{i}.h"'
-
-a = list_subdirs(input())
-print(format_as_map(a))
-print()
-print(format_to_include(a))
+            res += f'#include "{i}.h"\n'
+    return res
