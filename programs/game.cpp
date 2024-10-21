@@ -10,12 +10,11 @@
 using namespace std;
 
 map<string, function<bool(data_struct)>> functions = {
-	tit_for_tat,
-	always_false,
-	tit_for_two_tats,
-	always_true
-};
-
+	"tit_for_tat": tit_for_tat,
+	"always_false": always_false,
+	"tit_for_two_tats": tit_for_two_tats,
+	"always_true": always_true,
+}
 
 int main() {
 	ios::sync_with_stdio(0);
