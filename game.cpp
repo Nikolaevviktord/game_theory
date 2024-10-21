@@ -5,8 +5,11 @@
 #include "data_struct.h"
 #include <functional>
 #include <map>
+#include <iostream>
 
-std::vector<std::function<bool(data_struct)>> functions = {
+using namespace std;
+
+map<string, function<bool(data_struct)>> functions = {
 	tit_for_tat,
 	always_false,
 	tit_for_two_tats,
@@ -19,7 +22,7 @@ int main() {
 	cin.tie(0);
 	cout.tie(0);
 
-	std::map<std::function<bool(data_struct)>> points;
+	map<string, int> points;
 	
 	for (auto i: functions) {
 		for (auto j: functions) {
@@ -30,9 +33,9 @@ int main() {
 
 			int points_i = 0, points_j = 0;
 
-			for (int i = 1; i <= 200; i++) {
-				bool res_i = i(data_for_i);
-				bool res_j = j(data_for_j);
+			for (int k = 1; k <= 200; k++) {
+				bool res_i = i.second(data_for_i);
+				bool res_j = j.second(data_for_j);
 
 				if (res_i && res_j) {
 					points_i += 3;
@@ -46,13 +49,13 @@ int main() {
 				data_for_j.enemy_solutions.push_back(res_i);
 			}
 
-			points[i] += points_i;
-			points[j] += points_j;
+			points[i.first] += points_i;
+			points[j.first] += points_j;
 		}
 	}
 
-	for (auto [i, j]: points) 
-		cout << i << " " << j << endl;
+	for (auto i: points) 
+		cout << i.first.first << " " << i.second << endl;
 
 	return 0;
 }
