@@ -9,8 +9,8 @@ def format_as_map(subdirs):
     res = "map<string, function<bool(data_struct)>> functions = {\n\t"
     for i in subdirs:
         if i != "data_struct":
-            res += f'"{i}": {i},\n\t'
-    return res[:-1] + '}'
+            res += '{' + f'"{i}", {i}' + '},\n\t'
+    return res[:-1] + '};'
 
 def format_to_include(subdirs):
     res = ""
@@ -22,6 +22,8 @@ def format_to_include(subdirs):
     return res
 
 programs = list_subdirs(sys.argv[1])
+
 print(format_to_include(programs))
 print()
 print(format_as_map(programs))
+
