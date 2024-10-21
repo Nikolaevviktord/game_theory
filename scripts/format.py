@@ -1,4 +1,5 @@
 import os
+import sys
 
 def list_subdirs(directory):
     subdirs = [d for d in os.listdir(directory) if os.path.isdir(os.path.join(directory, d))]
@@ -19,3 +20,8 @@ def format_to_include(subdirs):
         else:
             res += f'#include "{i}.h"\n'
     return res
+
+programs = list_subdirs(sys.argv[1])
+print(format_to_include(programs))
+print()
+print(format_as_map(programs))
