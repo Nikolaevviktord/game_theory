@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Define variables for the files
-SOURCE_FILE="./programs/game.cpp"
-OUTPUT_FILE="./programs/game.out"
-RESULT_FILE="./result.txt"
+SOURCE_FILE="../programs/game.cpp"
+OUTPUT_FILE="../programs/game.out"
+RESULT_FILE="../result.txt"
 
 # Compile the C++ code
 g++ "$SOURCE_FILE" -o "$OUTPUT_FILE"
